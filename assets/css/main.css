@@ -135,7 +135,7 @@ body, input, select, textarea {
 }
 
 .circularPhotoSmall {
-  height: 150px;
+  height: 20vmin;
   border-radius: 50%;
 }
 
