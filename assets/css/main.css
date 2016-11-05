@@ -18,7 +18,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 #home-news{
-  font-size: 4vmin;
+  font-size: 4vh;
 	text-align:center;
 	text-transform:uppercase;
 	color:#464646;
@@ -135,7 +135,7 @@ body, input, select, textarea {
 }
 
 .circularPhotoSmall {
-  height: 20vmin;
+  height: 20vh;
   border-radius: 50%;
 }
 
@@ -506,7 +506,7 @@ a {
 }
 
 #header h1 {
-  font-size: 7.5vmin;
+  font-size: 7.5vh;
   font-weight: 900;
   letter-spacing: -0.035em;
   line-height: 1em;
