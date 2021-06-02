@@ -1,3 +1,0 @@
-User-agent: * 
-Disallow: /res.pdf
-Sitemap: http://www.williamheld.com/sitemap.xml
