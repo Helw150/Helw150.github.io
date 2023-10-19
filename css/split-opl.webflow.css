@@ -79,6 +79,12 @@ a {
   line-height: 160%;
 }
 
+.location {
+    margin-top: -10px;
+  color: #485462;
+  font-size: 13px;
+}
+
 .credit {
   color: #485462;
   font-size: 13px;
