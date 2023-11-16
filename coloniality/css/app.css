@@ -9,25 +9,31 @@ a:hover {
   text-decoration: none;
 }
 
+.map-row{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
 @media (min-width:800px){
 .regional-language-graph{
     display: inline-block;
-    heigh: 25vw;
+    height: 25vw;
     width: 45vw;}
+
 .raw-map{
     display: inline-block;
-    heigh: 25vw;
+    height: 25vw;
     width: 40vw;}
 
 .regional-language-graph-2{
     display: inline-block;
-    heigh: 25vw;
+    height: 25vw;
     width: 45vw;
     margin-left: 2vw;
 }
 .top-fig{
     display: block;
-    height: 22vw;
     width: 60vw;
 }
 }
