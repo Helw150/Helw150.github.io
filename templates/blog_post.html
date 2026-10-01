@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="container header blog-post">
+  <nav><a href="{{ root }}">{{ config.name }}</a> / <a href="{{ root }}blog/">Notes</a></nav>
+  <article>
+    <header><p class="post-date">{{ post.date }} · {{ config.name }}</p><h1>{{ post.title }}</h1><p class="post-summary">{{ post.summary }}</p></header>
+    <div class="blog-content">{{ post.body | safe }}</div>
+  </article>
+</main>
+{% endblock %}

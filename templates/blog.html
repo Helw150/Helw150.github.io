@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="container header">
+  <nav><a href="{{ root }}">← {{ config.name }}</a></nav>
+  <h1>Notes</h1>
+  <p>Research notes and interactive explanations.</p>
+  {% for post in posts %}
+  <article class="post-preview"><p class="post-date">{{ post.date }}</p><h2><a href="{{ root }}blog/{{ post.slug }}/">{{ post.title }}</a></h2><p>{{ post.summary }}</p></article>
+  {% endfor %}
+</main>
+{% endblock %}

@@ -1,0 +1,37 @@
+name: William Held
+role: Member of Technical Staff at Open Athena
+email: me@williamheld.com
+email_display: me [at] williamheld.com
+description: William Held's research, publications, and interactive explanations.
+links:
+  - title: General Links
+    items:
+      - {label: Bluesky, url: 'https://bsky.app/profile/williamheld.com'}
+      - {label: Twitter, url: 'https://twitter.com/WilliamBarrHeld'}
+      - {label: LinkedIn, url: 'https://www.linkedin.com/in/williambarrheld/'}
+      - {label: GitHub, url: 'https://github.com/Helw150'}
+  - title: Academic Links
+    items:
+      - {label: Semantic Scholar, url: 'https://www.semanticscholar.org/author/William-B.-Held/46552910'}
+      - {label: Google Scholar, url: 'https://scholar.google.com/citations?user=SP9VJNkAAAAJ&hl=en'}
+      - {label: DBLP, url: 'https://dblp.org/pid/245/8601.html'}
+talks:
+  - title: Data, Data, Data
+    venue: Stanford CS 329X
+    url: https://web.stanford.edu/class/cs329x/
+  - title: Prompting Tutorial
+    venue: Stanford d.school
+    url: https://dschool.stanford.edu/study/elective-courses/design-for-learning-generative-ai-for-collaborative-learning-fall-2024
+  - title: LLM Lecture
+    venue: Georgia Tech CS 7643
+    url: https://www.cc.gatech.edu/classes/AY2024/cs7643_fall/
+selected_papers:
+  - title: Relative Scaling Laws for LLMs
+    url: https://arxiv.org/abs/2510.24626
+    authors: William Held, David Hall, Percy Liang, Diyi Yang
+  - title: Distilling an End-to-End Voice Assistant Without Instruction Training Data
+    url: https://aclanthology.org/2025.acl-long.388/
+    authors: William Held, Yanzhe Zhang, Minzhi Li, Weiyan Shi, Michael J Ryan, Diyi Yang
+  - title: Optimizing Pretraining Data Mixtures with LLM-Estimated Utility
+    url: https://arxiv.org/abs/2501.11747
+    authors: William Held, Bhargavi Paranjape, Punit Singh Koura, Mike Lewis, Frank Zhang, Todor Mihaylov

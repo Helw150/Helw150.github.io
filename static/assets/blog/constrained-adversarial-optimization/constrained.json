@@ -1,0 +1,11 @@
+{
+  "mode": "constrained",
+  "epsilon": 0.3,
+  "angleDegrees": 45,
+  "displacement": 1.059,
+  "initialLambda": 1,
+  "learningRate": 0.0043,
+  "dualLearningRate": 0.043000000000000003,
+  "damping": 86.0,
+  "steps": 15000
+}

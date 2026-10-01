@@ -1,0 +1,8 @@
+{
+  "lambda": 0.99,
+  "epsilon": 0.3,
+  "angleDegrees": 45,
+  "displacement": 1.059,
+  "learningRate": 0.08600000000000001,
+  "steps": 200
+}

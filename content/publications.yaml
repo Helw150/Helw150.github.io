@@ -1,0 +1,115 @@
+- title: 'Marin: An Open Lab for Building Foundation Models'
+  url: https://marin.community/blog/2025/05/19/announcement/
+  authors: David Hall, Ahmed Ahmed, Christopher Chou, Abhinav Garg, Rohith Kuditipudi, <strong>Will Held</strong>, … Percy Liang
+  venue: Blog & Open-Source Software, 2025
+  note: ''
+- title: 'CAVA: Comprehensive Assessment for Voice Assistants'
+  url: https://talkarena.org/cava
+  authors: <strong>William Held</strong>, Michael J. Ryan, … Diyi Yang
+  venue: Blog & Open-Source Software, 2025
+  note: ''
+- title: Distilling an End-to-End Voice Assistant from Speech Recognition Data
+  url: https://arxiv.org/abs/2410.02678
+  authors: <strong>William Held</strong>, Ella Li, Michael Ryan, Weiyan Shi, Yanzhe Zhang, Diyi Yang
+  venue: 63rd Annual Meeting of the Association for Computational Linguistics, Oral (Top 5% of Papers), 2025
+  note: ''
+- title: Mind the Gap! Static and Interactive Evaluations of Large Audio Models
+  url: https://arxiv.org/abs/2502.15919
+  authors: <strong>William Held</strong>, Ella Li, Michael J Ryan, Kunat Pipatanakul, Potsawee Manakul, Hao Zhu, Diyi Yang <em>Equal Contribution</em>
+  venue: 63rd Annual Meeting of the Association for Computational Linguistics, Oral (Top 5% of Papers), 2025
+  note: ''
+- title: SynthesizeMe! Inducing Persona-Guided Prompts for Personalized Reward Models in LLMs
+  url: https://arxiv.org/abs/2506.05598
+  authors: Michael J Ryan, Omar Shaikh, Aditri Bhagirath, Daniel Frees, <strong>William Held</strong>, Diyi Yang
+  venue: 63rd Annual Meeting of the Association for Computational Linguistics, 2025
+  note: ''
+- title: Optimizing Pretraining Data Mixtures with LLM-Estimated Utility
+  url: https://arxiv.org/abs/2501.11747
+  authors: <strong>William Held</strong>, Bhargavi Paranjape, Punit Singh Koura, Mike Lewis, Frank Zhang, Todor Mihaylov
+  venue: Preprint, 2024
+  note: ''
+- title: Perceptions of Language Technology Failures from South Asian English Speakers
+  url: https://aclanthology.org/2024.findings-acl.241/
+  authors: <strong>William Held</strong>, Faye Holt <em>Equal Contribution</em>, Diyi Yang
+  venue: Findings of the Association for Computational Linguistics ACL 2024, 2024
+  note: ''
+- title: Measuring and Addressing Indexical Bias in Information Retrieval
+  url: https://aclanthology.org/2024.findings-acl.763/
+  authors: Caleb Ziems, <strong>William Held</strong>, Jane Dwivedi-Yu, Diyi Yang
+  venue: Findings of the Association for Computational Linguistics ACL 2024, 2024
+  note: ''
+- title: Unintended Impacts of LLM Alignment on Global Representation
+  url: https://aclanthology.org/2024.acl-long.853/
+  authors: Michael Ryan, <strong>William Held</strong>, Diyi Yang
+  venue: Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics, 2024
+  note: 'Main, Long Paper Acceptance Rate: 23.5%'
+- title: A Material Lens on Coloniality in NLP
+  url: https://williamheld.com/coloniality/
+  authors: <strong>William Held</strong>, Camille Harris, Michael Best, Diyi Yang
+  venue: Pre-Print, 2023
+  note: ''
+- title: Task-Agnostic Low-Rank Adapters for Unseen English Dialects
+  url: https://arxiv.org/abs/2212.08011
+  authors: Zedian Xiao, <strong>William Held</strong>, Yanchen Liu, Diyi Yang
+  venue: The 2023 Conference on Empirical Methods in Natural Language Processing, 2023
+  note: ''
+- title: 'DADA: Dialect Adaptation via Dynamic Aggregation of Linguistic Rules'
+  url: https://arxiv.org/abs/2212.08011
+  authors: Yanchen Liu, <strong>William Held</strong>, Diyi Yang
+  venue: The 2023 Conference on Empirical Methods in Natural Language Processing, 2023
+  note: ''
+- title: 'TADA : Task Agnostic Dialect Adapters for English'
+  url: https://aclanthology.org/2023.findings-acl.51/
+  authors: <strong>William Held</strong>, Caleb Ziems, Diyi Yang
+  venue: 61st Annual Meeting of the Association for Computational Linguistics, 2023
+  note: 'Findings, Short Paper Acceptance Rate: 35.58%'
+- title: Can Large Language Models Transform Computational Social Science?
+  url: https://arxiv.org/abs/2305.03514
+  authors: Caleb Ziems, <strong>William Held</strong>, Omar Shaikh, Jiaao Chen, Zhehao Zhang, Diyi Yang
+  venue: Journal of Computational Linguistics, 2023
+  note: ''
+- title: Modeling Cross-Cultural Pragmatic Inference with Codenames Duet
+  url: https://aclanthology.org/2023.findings-acl.410/
+  authors: Omar Shaikh, Caleb Ziems, <strong>William Held</strong>, Aryan Pariani, Fred Morstatter, Diyi Yang
+  venue: 61st Annual Meeting of the Association for Computational Linguistics, 2023
+  note: 'Findings, Long Paper Acceptance Rate: 41.89%'
+- title: 'Multi-VALUE: A Framework for Cross-Dialectal English NLP'
+  url: https://aclanthology.org/2023.acl-long.44/
+  authors: <strong>William Held</strong>, Caleb Ziems, Jingfeng Yang, Jwala Dhamala, Rahul Gupta, Diyi Yang <em>Equal Contribution</em>
+  venue: 61st Annual Meeting of the Association for Computational Linguistics, 2023
+  note: 'Main Conference, Long Paper Acceptance Rate: 20.75%'
+- title: 'DAMP: Doubly Aligned Multilingual Parser for Task-Oriented Parsing'
+  url: https://aclanthology.org/2023.acl-long.199/
+  authors: <strong>William Held</strong>, Chris Hidey, Fei Liu, Eric Zhu, Rahul Goel, Diyi Yang, Rushin Shah
+  venue: 61st Annual Meeting of the Association for Computational Linguistics, 2023
+  note: 'Main Conference, Long Paper Acceptance Rate: 20.75%'
+- title: On Second Thought, Let's Not Think Step by Step! Bias and Toxicity in Zero-Shot Reasoning
+  url: https://aclanthology.org/2023.acl-long.244/
+  authors: Omar Shaikh, Hongxin Zhang, <strong>William Held</strong>, Michael Bernstein, Diyi Yang
+  venue: 61st Annual Meeting of the Association for Computational Linguistics, 2023
+  note: 'Main Conference, Long Paper Acceptance Rate: 20.75%'
+- title: 'Shapley Head Pruning: Identifying and Removing Interference in Multilingual Transformers'
+  url: https://aclanthology.org/2023.eacl-main.177/
+  authors: <strong>William Held</strong>, Diyi Yang
+  venue: 17th Conference of the European Chapter of the Association for Computational Linguistics, 2022
+  note: 'Main Conference, Long Paper Acceptance Rate: 24.7%'
+- title: 'Focus on what matters: Applying Discourse Coherence Theory to Cross Document Coreference'
+  url: https://aclanthology.org/2021.emnlp-main.106/
+  authors: <strong>William Held</strong>, Dan Iter, Dan Jurafsky
+  venue: Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing, 2021
+  note: 'Selected for Oral Presentation, Long Paper Acceptance Rate: 24.6%'
+- title: The Effectiveness of Simple Hybrid Systems for Hypernym Discovery
+  url: https://www.aclweb.org/anthology/P19-1327/
+  authors: <strong>William Held</strong>, Nizar Habash
+  venue: Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, 2019
+  note: 'Short Paper Acceptance Rate: 18.2%'
+- title: Transitioning Green-Gauss Gradients to the Kokkos Framework
+  url: https://www.osti.gov/biblio/1343384
+  authors: <strong>William Held</strong>, Andrew Bradley
+  venue: Sandia National Labs Center for Computing Research Summer Proceedings, 2016
+  note: ''
+- title: A Testing Framework for a Hybrid Triangular Solver
+  url: https://www.osti.gov/biblio/1237005
+  authors: <strong>William Held</strong>, Andrew Bradley
+  venue: Sandia National Labs Center for Computing Research Summer Proceedings, 2015
+  note: ''

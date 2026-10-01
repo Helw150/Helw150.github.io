@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description }}">
+  <title>{{ title }}</title>
+  <link rel="icon" href="{{ root }}images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="{{ root }}css/style.css">
+  {% if math %}<link rel="stylesheet" href="{{ root }}js/vendor/katex/katex.min.css">{% endif %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  {% block content %}{% endblock %}
+  <footer>©{{ year }} {{ config.name }} · <a href="{{ root }}blog/">Notes</a></footer>
+  {% if d3 %}
+  <script src="{{ root }}js/vendor/d3.v7.min.js" defer></script>
+  <script type="module" src="{{ root }}js/figures.js"></script>
+  {% endif %}
+  {% if math %}
+  <script src="{{ root }}js/vendor/katex/katex.min.js" defer></script>
+  <script src="{{ root }}js/vendor/katex/contrib/auto-render.min.js" defer></script>
+  <script src="{{ root }}js/math.js" defer></script>
+  {% endif %}
+</body>
+</html>
