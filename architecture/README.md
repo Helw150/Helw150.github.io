@@ -19,7 +19,7 @@ A `{{d3: file.json | renderer="name" | title="..." | caption="..."}}` shortcode 
 
 The Pareto renderer uses an isolated math module with analytic gradients derived from the original JAX losses, including clipped loss evaluation. The adversary loss is two minus the original second cost, matching the article’s higher-is-better convention. Both modes minimize task loss minus weighted adversary loss; the constrained mode enforces adversary loss ≥ ε. Two figure modes share the loss-space plot. The fixed-weight mode shows one trajectory controlled by λ; the constrained mode exposes ε and simulates projected, damped multiplier updates. The constrained settings specify primal/dual step sizes, damping, initial multiplier, and iteration count in JSON. Both show the analytic constraint optimum for comparison; the constrained path is computed independently from gradients. Python is only a build dependency.
 
-Source is maintained on `main`. GitHub Pages serves the generated output committed to the `gh-pages` branch. Run the Python and Node checks before building and publishing. The optional Actions workflow template in `architecture/github-pages-workflow.yml` is inactive.
+Source is maintained on `main`. The active `.github/workflows/deploy.yml` runs Python and Node checks and builds the site on pull requests and main pushes. Main pushes and manual dispatches deploy the generated Pages artifact. Pages uses GitHub Actions; the older `gh-pages` branch is retained as a previous deployment snapshot.
 
 Typography uses Noto Sans for body text, controls, and SVG labels, and Noto Sans Display for headings. Figure styling favors white space, thin reference lines, direct labels, restrained color, and equal axis scales over decorative frames and legends.
 

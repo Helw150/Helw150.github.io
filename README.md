@@ -45,7 +45,7 @@ node --test tests/pareto.test.mjs
 uv run build.py
 ```
 
-Node 18+ is only needed for the JavaScript tests. Source lives on `main`; GitHub Pages serves the compiled site from the root of `gh-pages`, at williamheld.com. Rebuild and publish the contents of `dist/` to `gh-pages` after source changes. The custom domain is preserved in `static/CNAME`. An optional Actions deployment template is saved in `architecture/github-pages-workflow.yml`; it is not active.
+Node 18+ is only needed for the JavaScript tests. Source lives on `main`. GitHub Actions runs checks and builds the site on pull requests; pushes to `main` and manual workflow dispatches also deploy `dist/` to GitHub Pages at williamheld.com. Pages uses the GitHub Actions build source. The custom domain is preserved in `static/CNAME`; the older `gh-pages` branch is retained as a previous deployment snapshot.
 
 See [architecture/README.md](architecture/README.md) for the build and content model.
 
