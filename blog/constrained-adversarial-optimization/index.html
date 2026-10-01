@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="One of my favorite tricks for improving linguistic robustness without extra labeled data">
+  <title>Making predictions language agnostic · William Held</title>
+  <link rel="icon" href="../../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../js/vendor/katex/katex.min.css">
+</head>
+<body class="">
+  
+<main class="container header blog-post">
+  <nav><a href="../../">William Held</a> / <a href="../../blog/">Notes</a></nav>
+  <article>
+    <header><p class="post-date">2026-09-30 · William Held</p><h1>Making predictions language agnostic</h1><p class="post-summary">One of my favorite tricks for improving linguistic robustness without extra labeled data</p></header>
+    <div class="blog-content"><p>Suppose we want to guarantee that a model takes the same actions when it receives the same sentence translated into different languages. There are lots of reasons this could be useful, but one is that it lets you <a href="https://arxiv.org/html/2212.08054v2">transfer knowledge across languages</a>!</p>
+<p>By default, this guarantee does not hold. Instead, models tend to learn features that aren't very useful for the task but cause it to behave differently in different languages. So we want to come up with an extra term, an auxiliary loss, that encourages language-independent behavior. One particular form of auxiliary loss that has strong guarantees is <a href="https://arxiv.org/html/1801.07593">adversarial learning</a>.</p>
+<p>While the model learns the task, we train a second classifier, an <em>adversary</em>, to predict the language from the features the model learns. The model learns to do the task while also fooling this adversary. If no adversary can distinguish languages at better than chance, the features carry no information about which group a request came from. Now, if the models actions  are conditioned only on those features, the translated requests produce the same actions.</p>
+<p>The usual approach to adversarial learning is to choose a weight <span class="math">\(\lambda\)</span> for the auxiliary adversarial loss. The model minimizes:</p>
+<div class="math">$$
+L_{\mathrm{task}} - \lambda L_{\mathrm{adv}}
+$$</div>
+<p>Here <span class="math">\(L_{\mathrm{task}}\)</span> measures task prediction errors, and <span class="math">\(L_{\mathrm{adv}}\)</span> measures language prediction errors. The model tries to lower the first and raise the second; <span class="math">\(\lambda\)</span> controls the balance. How should we set <span class="math">\(\lambda\)</span> such that the model achieves both good results and fools the adversary?</p>
+<figure class="interactive-figure"><h3>Set the weight and hope</h3><div class="d3-figure" data-d3-renderer="pareto" data-d3-src="../../assets/blog/constrained-adversarial-optimization/pareto.json" role="group" aria-label="Set the weight and hope"><p class="figure-status">Loading figure…</p></div><noscript><p>Enable JavaScript to explore the figure. The explanation below describes the results.</p></noscript><figcaption>Move λ just below and above 1. A small change sends training toward opposite ends of the curve: either missing the limit or sacrificing more task performance than necessary. The open circle marks the desired tradeoff.</figcaption></figure>
+
+<p>As you might see from the figure above, choosing <span class="math">\(\lambda\)</span> is hard since the correct value is on a knife's edge. Push too little against the adversary and the model ignores it; push too hard and the task suffers. In a real setting the adversary is itself dynamic and learning, so we often have to push different amounts at different points of training! There's no good way to set <span class="math">\(\lambda\)</span> without running lots of hyperparameter tuning experiments.</p>
+<p>A cleaner solution lies conveniently in constrained optimization. Since we have a goal in mind, a 50-50 guess for the adversary, we can define the adversary’s loss when this occurs as a constraint <span class="math">\(\varepsilon\)</span> and write the objective as:</p>
+<div class="math">$$
+\mathcal{L}=L_{\mathrm{task}}+\lambda(\varepsilon-L_{\mathrm{adv}})
+$$</div>
+<p>Now, rather than setting <span class="math">\(\lambda\)</span>, we learn it with gradient ascent. The model minimizes this expression, while <span class="math">\(\lambda\)</span> maximizes it:</p>
+<div class="math">$$
+\lambda \leftarrow \max\!\left(0,\;\lambda+\eta_{\lambda}(\varepsilon-L_{\mathrm{adv}})\right)
+$$</div>
+<p>When the adversary is good at guessing and the constraint is violated, <span class="math">\(\lambda\)</span> rises. When adversary loss exceeds the target, <span class="math">\(\lambda\)</span> decreases, easing the pressure on the model. If it reaches zero, the model only optimizes the downstream task.</p>
+<p>Conveniently, we can do this whole optimization process in a single backpropagation pass by simply inverting the gradient at boundaries so it has minimal overhead! We reuse the same losses and gradients, adding just <span class="math">\(\lambda\)</span> as a learned parameter which we force to be non-negative.</p>
+<p>The second figure uses this update: the weight rises when adversary loss falls below <span class="math">\(\varepsilon\)</span>.</p>
+<figure class="interactive-figure"><h3>Choose the limit, learn the weight</h3><div class="d3-figure" data-d3-renderer="pareto" data-d3-src="../../assets/blog/constrained-adversarial-optimization/constrained.json" role="group" aria-label="Choose the limit, learn the weight"><p class="figure-status">Loading figure…</p></div><noscript><p>Enable JavaScript to explore the figure. The explanation below describes the results.</p></noscript><figcaption>The blue path is the simulated training trajectory. The open circle marks the best point on the curve that meets the limit.</figcaption></figure>
+
+<p>In practice, I've repeatedly found this trick quite useful. While it technically has more hyperparameters, trading <span class="math">\(\lambda\)</span> for <span class="math">\(\varepsilon\)</span> and <span class="math">\(\eta_{\lambda}\)</span>, <span class="math">\(\varepsilon\)</span> can be set from theory without experiments and <span class="math">\(\eta_{\lambda}\)</span> dictates the efficiency with which your model converges rather than whether it converges at all.</p>
+<p>So if you find yourself tuning a series of loss weights, consider constrained optimization!</p>
+<p>Thanks to <a href="https://www.cs.columbia.edu/~chidey/">Christopher Hidey</a> for introducing me to Jonas Degrave and Ira Korshunova’s <a href="https://www.engraved.blog/how-we-can-make-machine-learning-algorithms-tunable/">How we can make machine learning algorithms tunable</a> which taught me this trick and explains it in much more depth.</p>
+</div>
+  </article>
+</main>
+
+  <footer>©2026 William Held · <a href="../../blog/">Notes</a></footer>
+  
+  <script src="../../js/vendor/d3.v7.min.js" defer></script>
+  <script type="module" src="../../js/figures.js"></script>
+  
+  
+  <script src="../../js/vendor/katex/katex.min.js" defer></script>
+  <script src="../../js/vendor/katex/contrib/auto-render.min.js" defer></script>
+  <script src="../../js/math.js" defer></script>
+  
+</body>
+</html>
