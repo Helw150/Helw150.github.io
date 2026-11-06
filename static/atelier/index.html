@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob:; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Atelier · Research reader</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./host.css">
+  <script src="./vendor/markdown-it.min.js"></script>
+  <script src="./vendor/js-yaml.min.js"></script>
+  <script type="module" src="./static.mjs"></script>
+</head>
+<body class="connecting static-mode">
+<dialog id="connection-panel" aria-labelledby="connection-title">
+<form id="repo-form">
+<h1 id="connection-title">Open an Atelier</h1>
+<label for="repo">Hugging Face repository</label>
+<input id="repo" name="repo" placeholder="owner/repository or Hugging Face URL" required autocomplete="off">
+<div class="connection-options"><label>Type<select name="type"><option value="dataset">Dataset</option><option value="model">Model</option><option value="space">Space</option></select></label>
+<label>Revision<input name="revision" value="main" required></label></div>
+<details><summary>Private repository</summary><label for="hf-token">Read token · held in memory</label><input id="hf-token" name="token" type="password" autocomplete="off" spellcheck="false"></details>
+<p id="connection-error" role="alert"></p><button class="button" type="submit">Open</button>
+</form></dialog>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside class="sidebar" aria-label="Repository navigation">
+    <a class="brand" aria-label="Atelier overview" href="#/overview"><span class="brand-icon">a</span><span class="brand-name">atelier</span></a>
+    <div class="project-name" id="project-name">Opening repository…</div>
+    <div class="revision" id="revision"></div>
+    <nav class="primary-nav" aria-label="Views">
+      <a href="#/overview" data-view="overview" title="Overview" aria-label="Overview"><span class="nav-icon" aria-hidden="true">◫</span><span class="nav-label">Overview</span></a>
+      <a href="#/work" data-view="work" title="Agent work" aria-label="Agent work"><span class="nav-icon" aria-hidden="true">◷</span><span class="nav-label">Agent work</span><small id="work-count"></small></a>
+      <a href="#/documents" data-view="documents" title="Documents" aria-label="Documents"><span class="nav-icon" aria-hidden="true">▤</span><span class="nav-label">Documents</span> <small id="document-count"></small></a>
+      <a href="#/experiments" data-view="experiments" title="Experiments" aria-label="Experiments"><span class="nav-icon" aria-hidden="true">⌁</span><span class="nav-label">Experiments</span> <small id="experiment-count"></small></a>
+      <a href="#/figures" data-view="figures" title="Figures" aria-label="Figures"><span class="nav-icon" aria-hidden="true">↗</span><span class="nav-label">Figures</span> <small id="figure-count"></small></a>
+    </nav>
+    <div class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Find a file" placeholder="Find a file" autocomplete="off"></div>
+    <nav class="file-nav" id="file-nav" aria-label="Files"></nav>
+    <div class="sidebar-footer"><span class="readonly">Read only</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="toolbar"><button id="change-repo" class="button subtle">Repository</button><div id="breadcrumb"></div><span id="header-revision"></span><button id="refresh" class="button subtle" title="Reload files from disk">↻ <span>Refresh</span></button></header>
+    <main id="main" tabindex="-1"><div class="loading" role="status">Opening research repository…</div></main>
+  </div>
+  <div id="notice" class="notice" role="status" hidden></div>
+</body>
+</html>

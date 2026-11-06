@@ -1,0 +1,7 @@
+@font-face{font-family:"Noto Sans";font-style:normal;font-weight:400;font-display:swap;src:url("./fonts/noto-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Noto Sans";font-style:normal;font-weight:600;font-display:swap;src:url("./fonts/noto-sans-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Noto Sans Display";font-style:normal;font-weight:500;font-display:swap;src:url("./fonts/noto-sans-display-latin-500-normal.woff2") format("woff2")}
+/* Host theme; the portable reader and research format are unchanged. */
+:root{--font-body:"Noto Sans",sans-serif;--font-display:"Noto Sans Display","Noto Sans",sans-serif;--sans:var(--font-body);--serif:var(--font-display);--paper:#fff;--sidebar:#fff;--ink:#292929;--muted:#686868;--teal:#2764a5;--blue:#2764a5;--line:#eee;--tint:#fff}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;letter-spacing:normal}
+a:hover{color:#164f72}
