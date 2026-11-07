@@ -33,7 +33,7 @@ export function renderDocument(source, path, figures) {
     if (token.type === 'inline') {
       for (const child of token.children || []) {
         if (child.type === 'html_inline') {
-          const claim = child.content.match(/^<!-- claimed:\s*([A-Za-z0-9_.-]+)\s*-->$/);
+          const claim = child.content.match(/^<!-- claimed:\s*([^\s<>]+)\s*-->$/);
           child.content = claim
             ? `<span class="claim">claimed · ${escape(claim[1])}</span>`
             : escape(child.content);

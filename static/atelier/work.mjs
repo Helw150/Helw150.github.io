@@ -2,6 +2,7 @@
 import { yaml } from './format.mjs';
 export const isWorkRecord = path => path.startsWith('agents/work/') && path.endsWith('.md') && path.split('/').at(-1) !== 'README.md';
 export function parseWork(text, path) {
+  text = text.replace(/\r\n/g, "\n");
   let fields = {}, body = text;
   if (text.startsWith('---\n')) {
     const end = text.indexOf('\n---\n', 4);
