@@ -1098,8 +1098,24 @@ body.documents-mode { overflow:hidden; }
 
 #connection-panel { width:min(520px,calc(100vw - 32px)); padding:32px; border:1px solid var(--line); border-radius:4px; color:var(--ink); background:var(--paper); }
 #connection-panel::backdrop { background:rgb(252 251 248 / 92%); }
+#atelier-home { width:min(100% - 40px, 920px); margin:clamp(28px, 10vh, 96px) auto 40px; }
+.home-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+.home-header h1 { display:flex; align-items:center; gap:12px; margin:0; font-size:38px; }
+.home-header > a { font-size:13px; }
+.home-content { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, .8fr); gap:clamp(24px, 6vw, 72px); padding-top:32px; }
+.home-content h2 { font:normal 25px/1.2 var(--serif); margin:0 0 16px; }
+.home-workspace { display:block; padding:12px 0; border-bottom:1px solid var(--line); color:var(--ink); overflow-wrap:anywhere; }
+.home-workspace strong { color:var(--teal); }
+.home-workspace:hover strong { text-decoration:underline; }
+.home-workspace:hover { text-decoration:none; }
+.home-workspace small { display:block; margin-top:3px; color:var(--muted); }
+#home-recent h3 { margin:20px 0 0; color:var(--muted); }
+#home-recent-list { margin:0; padding:0; list-style:none; }
+@media (max-width:640px) {
+  .home-content { grid-template-columns:1fr; }
+}
 #repo-form { display:grid; gap:14px; }
-#repo-form h1 { font-size:27px; margin:0 0 8px; }
+#connection-panel h2 { font:normal 27px/1.2 var(--serif); margin:0 0 8px; }
 #repo-form label { display:block; font-size:12px; color:var(--muted); }
 #repo-form input,#repo-form select { width:100%; border:1px solid var(--line); padding:10px; background:var(--surface); color:var(--ink); font:inherit; margin-top:4px; }
 #repo-form summary { font-size:12px; color:var(--muted); cursor:pointer; }
@@ -1107,7 +1123,9 @@ body.documents-mode { overflow:hidden; }
 #repo-form button { justify-self:start; min-width:80px; }
 .connection-options { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 #connection-error { color:#9b3e29; font-size:12px; margin:0; }
+#connection-error:empty { display:none; }
 .connecting .sidebar,.connecting .workspace { visibility:hidden; }
+.connecting:has(#atelier-home:not([hidden])) :is(.sidebar, .workspace, .skip-link) { display:none; }
 
 /* The static reader uses one file/document navigation surface at a time. */
 .static-mode .sidebar { position:fixed; inset:0 auto 0 0; width:60px; padding:14px 6px; display:flex; flex-direction:column; align-items:center; }

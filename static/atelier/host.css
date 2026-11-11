@@ -5,3 +5,11 @@
 :root{--font-body:"Noto Sans",sans-serif;--font-display:"Noto Sans Display","Noto Sans",sans-serif;--sans:var(--font-body);--serif:var(--font-display);--paper:#fff;--sidebar:#fff;--ink:#292929;--muted:#686868;--teal:#2764a5;--blue:#2764a5;--line:#eee;--tint:#fff}
 h1,h2,h3{font-family:var(--font-display);font-weight:500;letter-spacing:normal}
 a:hover{color:#164f72}
+
+#atelier-home { max-width:800px; }
+.home-header h1 { font-size:36px; }
+.home-content h2 { font-weight:500; }
+#atelier-home :focus-visible { outline:2px solid var(--teal); outline-offset:4px; }
+@media (max-width:640px) {
+  .home-header h1 { font-size:30px; }
+}

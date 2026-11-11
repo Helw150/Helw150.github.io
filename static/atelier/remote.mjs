@@ -91,7 +91,51 @@ window.atelierAPI = api;
 window.atelierAsset = asset;
 const form = document.querySelector('#repo-form'),
   panel = document.querySelector('#connection-panel'),
-  error = document.querySelector('#connection-error');
+  error = document.querySelector('#connection-error'),
+  home = document.querySelector('#atelier-home');
+const recentKey = 'atelier.recent-workspaces';
+
+function recentWorkspaces() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(recentKey) || '[]');
+    return saved.map(({ id, type, revision }) => repoAddress(id, type, revision)).slice(0, 6);
+  } catch {
+    return [];
+  }
+}
+
+function rememberWorkspace(address) {
+  const recent = recentWorkspaces().filter(entry =>
+    entry.id !== address.id || entry.type !== address.type || entry.revision !== address.revision);
+  try {
+    localStorage.setItem(recentKey, JSON.stringify([address, ...recent].slice(0, 6)));
+  } catch {
+    // Browsing still works when storage is unavailable.
+  }
+}
+
+function showHome() {
+  const list = document.querySelector('#home-recent-list');
+  for (const address of recentWorkspaces()) {
+    if (address.id === 'WillHeld/atelier-demo' && address.type === 'dataset' && address.revision === 'main') continue;
+    const query = new URLSearchParams({ repo: address.id, type: address.type, revision: address.revision });
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.className = 'home-workspace';
+    link.href = '?' + query + '#/overview';
+    const name = document.createElement('strong');
+    name.textContent = address.id;
+    const branch = document.createElement('small');
+    branch.textContent = address.revision;
+    link.append(name, branch);
+    item.append(link);
+    list.append(item);
+  }
+  document.querySelector('#home-recent').hidden = !list.childElementCount;
+  document.querySelector('#home-open').append(form);
+  home.hidden = false;
+}
+
 const params = new URLSearchParams(location.search);
 form.elements.repo.value = params.get('repo') || '';
 form.elements.revision.value = params.get('revision') || 'main';
@@ -107,9 +151,13 @@ form.addEventListener('submit', async (event) => {
       form.elements.type.value,
       form.elements.revision.value,
     );
-    const source = await new HFSource(address, form.elements.token.value).open();
+    const token = form.elements.token.value.trim();
+    const source = await new HFSource(address, token).open();
     await openSource(source);
+    if (!token) rememberWorkspace(address);
     form.elements.token.value = '';
+    home.hidden = true;
+    panel.append(form);
     panel.close();
     document.body.classList.remove('connecting');
     const url = new URL(location.href);
@@ -129,5 +177,9 @@ document.querySelector('#change-repo').addEventListener('click', () => panel.sho
 panel.addEventListener('cancel', (event) => {
   if (!repository) event.preventDefault();
 });
-panel.showModal();
+const brand = document.querySelector('.sidebar .brand');
+brand.href = './';
+brand.setAttribute('aria-label', 'Atelier home');
+brand.title = 'Atelier home';
+showHome();
 if (params.has('repo')) form.requestSubmit();

@@ -14,11 +14,30 @@
   <script type="module" src="./static.mjs"></script>
 </head>
 <body class="connecting static-mode">
+<main id="atelier-home" hidden>
+  <header class="home-header">
+    <h1><span class="brand-icon" aria-hidden="true">a</span>Atelier</h1>
+    <a href="https://github.com/Helw150/create-atelier#try-it">Create a workspace</a>
+  </header>
+  <div class="home-content">
+    <div id="home-open"></div>
+    <section class="home-workspaces" aria-labelledby="home-workspaces-title">
+      <h2 id="home-workspaces-title">Workspaces</h2>
+      <a class="home-workspace" href="?repo=WillHeld%2Fatelier-demo&amp;type=dataset&amp;revision=main#/overview">
+        <strong>Atelier development</strong><small>WillHeld/atelier-demo</small>
+      </a>
+      <section id="home-recent" aria-labelledby="home-recent-title" hidden>
+        <h3 id="home-recent-title">Recently opened</h3>
+        <ul id="home-recent-list"></ul>
+      </section>
+    </section>
+  </div>
+</main>
 <dialog id="connection-panel" aria-labelledby="connection-title">
 <form id="repo-form">
-<h1 id="connection-title">Open an Atelier</h1>
+<h2 id="connection-title">Open a workspace</h2>
 <label for="repo">Hugging Face repository</label>
-<input id="repo" name="repo" placeholder="owner/repository or Hugging Face URL" required autocomplete="off">
+<input id="repo" name="repo" placeholder="owner/repository or URL" required autocomplete="off">
 <div class="connection-options"><label>Type<select name="type"><option value="dataset">Dataset</option><option value="model">Model</option><option value="space">Space</option></select></label>
 <label>Revision<input name="revision" value="main" required></label></div>
 <details><summary>Private repository</summary><label for="hf-token">Read token · held in memory</label><input id="hf-token" name="token" type="password" autocomplete="off" spellcheck="false"></details>
